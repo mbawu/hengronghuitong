@@ -238,6 +238,7 @@ public final class R {
         public static final int home_hot_name=0x7f080028;
         public static final int home_hot_price=0x7f080029;
         public static final int home_hot_txt=0x7f080022;
+        public static final int home_photo=0x7f080019;
         public static final int home_scroll=0x7f080018;
         public static final int home_seckill_framlayout=0x7f08001b;
         public static final int home_seckill_gridview=0x7f08001f;
@@ -247,7 +248,6 @@ public final class R {
         public static final int home_seckill_outtime=0x7f080027;
         public static final int home_seckill_txt=0x7f08001c;
         public static final int home_title=0x7f080017;
-        public static final int home_viewFlipper=0x7f080019;
         public static final int home_wb=0x7f08002a;
         public static final int load_id=0x7f08002d;
         public static final int main_tab_group=0x7f08002e;

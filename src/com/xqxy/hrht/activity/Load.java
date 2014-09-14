@@ -29,7 +29,7 @@ public class Load extends BaseActivity {
 		/* 程序初始化的时候获得屏幕宽高 */
 		DisplayMetrics metric = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metric);
-		MyApplication.with = metric.widthPixels;
+		MyApplication.width = metric.widthPixels;
 		MyApplication.height = metric.heightPixels;
 		
 		handler = new Handler();

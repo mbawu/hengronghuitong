@@ -36,7 +36,7 @@ public class MyApplication extends Application {
 	public static boolean jPush = false; // 是否接受消息推送
 	public static boolean goToOrder=false;//是否要跳转到查看订单的页面
 	public static ProgressDialog mypDialog; // 全局进度条
-	public static int with; // 屏幕宽
+	public static int width; // 屏幕宽
 	public static int height; // 屏幕高
 	public static LayoutInflater Inflater; // 布局填充器
 	public static String seskey = ""; // 登录注册返回的身份秘钥
