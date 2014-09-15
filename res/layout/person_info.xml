@@ -41,7 +41,7 @@
                     <EditText
                         android:id="@+id/person_info_namemod"
                         style="@style/input_box"
-                        android:layout_width="200dp"
+                        android:layout_width="220dp"
                         android:layout_gravity="right"
                         android:gravity="left|center_vertical" />
                 </FrameLayout>
@@ -176,7 +176,7 @@
                             <Spinner
                                 android:id="@+id/person_info_provice"
                                 style="@style/input_box"
-                                android:layout_width="200dp"
+                                android:layout_width="220dp"
                                 android:layout_gravity="center_horizontal" />
 
                             <ImageView
@@ -215,7 +215,7 @@
                             <Spinner
                                 android:id="@+id/person_info_city"
                                 style="@style/input_box"
-                                android:layout_width="200dp"
+                                android:layout_width="220dp"
                                 android:layout_gravity="left" />
 
                             <ImageView
@@ -252,7 +252,7 @@
                             <Spinner
                                 android:id="@+id/person_info_area"
                                 style="@style/input_box"
-                                android:layout_width="200dp"
+                                android:layout_width="220dp"
                                 android:gravity="center" />
 
                             <ImageView
@@ -284,7 +284,7 @@
                     <EditText
                         android:id="@+id/person_info_detail"
                         style="@style/input_box"
-                        android:layout_width="200dp"
+                        android:layout_width="220dp"
                         android:layout_gravity="right" />
                 </FrameLayout>
                 <!-- 邮箱 -->
@@ -304,7 +304,7 @@
                     <EditText
                         android:id="@+id/person_info_emailmod"
                         style="@style/input_box"
-                        android:layout_width="200dp"
+                        android:layout_width="220dp"
                         android:layout_gravity="right"
                         android:gravity="left|center_vertical" />
                 </FrameLayout>
@@ -325,7 +325,7 @@
                     <EditText
                         android:id="@+id/person_info_phonemod"
                         style="@style/input_box"
-                        android:layout_width="200dp"
+                        android:layout_width="220dp"
                         android:layout_gravity="right"
                         android:gravity="left|center_vertical" />
                 </FrameLayout>

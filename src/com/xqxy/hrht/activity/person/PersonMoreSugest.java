@@ -1,6 +1,8 @@
 package com.xqxy.hrht.activity.person;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -102,11 +104,24 @@ public class PersonMoreSugest extends Activity implements OnClickListener{
 		
 	}
 	
+	//验证电话号码
+			public static boolean isMobileNO(String mobiles){     
+		        Pattern p = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");     
+		        Matcher m = p.matcher(mobiles);     
+		        return m.matches();     
+		    } 
+	
 	public void sendData(final NetworkAction request)
 	 {
 		if(contentTxt.getText().toString().equals(""))
 		{
 			Toast.makeText(this, "请输入留言内容", 2000).show();
+			return;
+		}
+		
+		if(!isMobileNO(phoneTxt.getText().toString()))
+		{
+			Toast.makeText(this, "请输入正确的手机号码", 2000).show();
 			return;
 		}
 	 HashMap<String, String> paramter = new HashMap<String, String>();

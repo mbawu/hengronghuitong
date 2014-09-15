@@ -249,6 +249,12 @@ public class SubmitOrder extends Activity implements OnClickListener {
 			// totalMoney=totalMoney+Double.valueOf(((Product)products.get(i)).getTotalPrice());
 			// }
 
+			//提交订单的时候判断一下是否有有效的收货地址了
+			if(defaultAddress==null)
+			{
+				Toast.makeText(this, "还没有收货地址，请添加收货地址以后再提交", 2000).show();
+				return;
+			}
 			paramter.put("totalMoney", ""
 					+ realPriceTxt.getText().toString().substring(1));
 			paramter.put("realname", defaultAddress.getRealname());
