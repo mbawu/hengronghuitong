@@ -65,6 +65,7 @@ public class PersonLogin extends Activity implements OnClickListener {
 			userNameTxt.setText(MyApplication.sp.getString("username", ""));
 			passwordTxt.setText(MyApplication.sp.getString("password", ""));
 			MyApplication.registerSuc=false;
+			login();
 		}
 	}
 
