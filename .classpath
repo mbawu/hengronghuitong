@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="libs/jpush-sdk-release1.6.3.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="src" path="/PluginDemo"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

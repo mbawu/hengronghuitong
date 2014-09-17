@@ -26,6 +26,7 @@ import com.xqxy.hrht.model.Coupon;
 import com.xqxy.hrht.model.ErrorMsg;
 import com.xqxy.hrht.model.NetworkAction;
 import com.xqxy.hrht.model.Product;
+import com.xqxy.hrht.pay.PayMethod;
 
 import android.app.Activity;
 import android.app.ActionBar.LayoutParams;
@@ -538,16 +539,31 @@ public class SubmitOrder extends Activity implements OnClickListener {
 												MyApplication.shopCartList.clear();
 										}
 									}
-									Log.i(MyApplication.TAG, "sub suc->"+MyApplication.shopCartList
-									.size());
 										try {
 											MyApplication.shopCartManager
 													.saveProducts(MyApplication.shopCartList);
 										} catch (Exception e) {
 											// TODO: handle exception
 										}
-									
-									showResult();
+									//end 删除购物车中提交成功的商品
+									//如果是在线支付的话跳转到支付页面
+										Intent intent=new Intent();
+									if(payway.equals("1"))
+									{
+										Toast.makeText(SubmitOrder.this, "提交订单成功", 2000).show();
+										intent.setClass(SubmitOrder.this, PayMethod.class);
+										intent.putExtra("subject", response.getString("subject"));
+										intent.putExtra("price", realPriceTxt.getText().toString().substring(1));
+										intent.putExtra("oid", response.getString("NEWID"));
+									}
+									//如果是货到付款的话跳转到提交订单成功页面
+									else if(payway.equals("2"))
+									{
+										intent.setClass(SubmitOrder.this, SubmitSuccess.class);
+									}
+									startActivity(intent);
+									finish();
+//									showResult();
 								}
 							} else {
 								Toast.makeText(
