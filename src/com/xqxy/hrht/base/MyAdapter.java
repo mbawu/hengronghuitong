@@ -492,7 +492,7 @@ public class MyAdapter extends BaseAdapter implements
 			// 商品数量
 			orderNumTxt.setText(order.getTotalRecord());
 			// 订单金额
-			orderTotalpriceTxt.setText(order.getTotalPrice());
+			orderTotalpriceTxt.setText("￥"+order.getTotalPrice());
 //			leftBtn.setTag(R.id.tag_first, convertView);
 			leftBtn.setTag(order.getOrderID());
 //			rightBtn.setTag(order.getOrderID());
