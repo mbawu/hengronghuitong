@@ -44,7 +44,7 @@
                     style="@style/MMTabButton"
                     android:layout_weight="1.0"
                     android:checked="true"
-                   android:paddingTop="7dp"
+                                       android:paddingTop="7dp"
                     android:drawableTop="@drawable/main_menu_home"
                     android:text="@string/main_menu_home"
                     android:textColor="@color/color_radiobutton" />

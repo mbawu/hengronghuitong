@@ -1,8 +1,5 @@
 package com.xqxy.hrht.activity.product;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,10 +9,6 @@ import org.json.JSONObject;
 
 import android.app.ActionBar.LayoutParams;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -31,7 +24,6 @@ import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -55,10 +47,11 @@ import com.xqxy.hrht.model.Product;
 public class Home extends BaseActivity implements OnClickListener,
 		OnItemClickListener {
 
-	private NetworkImageView img; //广告图片
 	private TextView titleTxt;// 标题文字
 	private LinearLayout hotMoreBtn; // 热门商品更多按钮
 	private LinearLayout secKillMoreBtn; // 秒杀商品更多按钮
+	private ViewFlipper flipper;// 广告容器
+	private String netAction = "getAd"; // 向服务器操作的动作
 	private MyGridView hotGridView;// 热卖商品
 	private MyGridView secKillGridView;// 热卖商品
 	private int page = 1; // 当前页码
@@ -106,14 +99,13 @@ public class Home extends BaseActivity implements OnClickListener,
 	}
 
 	private void initView() {
-		img = (NetworkImageView) findViewById(R.id.home_photo);
 		changeTime = new ChangeTime();
 		Thread thread = new Thread(changeTime);
 		thread.start();
 		hotTopModule = (FrameLayout) findViewById(R.id.home_hot_framlayout);//热门商品上面显示更多和文本的容器
 		secKillTopModule = (FrameLayout) findViewById(R.id.home_seckill_framlayout);// 秒杀商品上面显示更多和文本的容器
 		titleTxt = (TextView) findViewById(R.id.home_title);
-//		flipper = (ViewFlipper) findViewById(R.id.home_viewFlipper);
+		flipper = (ViewFlipper) findViewById(R.id.home_viewFlipper);
 		secKillGridView = (MyGridView) findViewById(R.id.home_seckill_gridview);
 		hotGridView = (MyGridView) findViewById(R.id.home_hot_gridview);
 		hotGridView.setOnItemClickListener(this);
@@ -226,7 +218,7 @@ public class Home extends BaseActivity implements OnClickListener,
 			url = Url.URL_INDEX;
 			paramter.put("act", "img1");
 			paramter.put("nowpage", "1");
-			paramter.put("pagesize", "1");
+			paramter.put("pagesize", "100");
 			paramter.put("sid", MyApplication.sid);
 		} else if (request.equals(NetworkAction.热门商品)) {
 			// MyApplication.progressShow(this, request.toString());
@@ -273,8 +265,11 @@ public class Home extends BaseActivity implements OnClickListener,
 								JSONArray lists = response.getJSONArray("list");
 								for (int i = 0; i < lists.length(); i++) {
 									JSONObject item = lists.getJSONObject(i);
+									NetworkImageView netView = new NetworkImageView(
+											Home.this);
 									String path = Url.URL_IMGPATH
 											+ item.getString("attachments_path");
+									Log.i(MyApplication.TAG, "path-->" + path);
 									//计算首页广告图片宽高
 									int height=(int) (MyApplication.width*(336.0/553.0));
 									Log.e("Test", "Bitmap width == " + MyApplication.width);  
@@ -283,13 +278,24 @@ public class Home extends BaseActivity implements OnClickListener,
 											LayoutParams.MATCH_PARENT,
 											height);
 									 
-									 img.setLayoutParams(layoutParams);
+									netView.setLayoutParams(layoutParams);
+
+									 
 									MyApplication.client
 											.getImageForNetImageView(path,
-													img,
+													netView,
 													R.drawable.ic_launcher);
+									flipper.addView(netView);
+									flipper.setInAnimation(Home.this,
+											R.anim.view_in_from_right);
+									flipper.setOutAnimation(Home.this,
+											R.anim.view_out_to_left);
+									flipper.startFlipping();
 								}
 
+								// } else {
+								//
+								// }
 							} else if (request.equals(NetworkAction.热门商品)) {// 获取热门商品
 								if (response.getInt("code") == 1) {// 如果成功的话
 									// objects.clear();
@@ -473,6 +479,4 @@ public class Home extends BaseActivity implements OnClickListener,
 		 startActivity(intent);
 
 	}
-	
-
 }
