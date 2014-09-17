@@ -54,6 +54,7 @@
                     android:id="@+id/main_tab_search"
                     style="@style/MMTabButton"
                     android:layout_weight="1.0"
+                                        android:paddingTop="7dp"
                     android:drawableTop="@drawable/main_menu_search"
                     android:text="@string/main_menu_search"
                     android:textColor="@color/color_radiobutton" />
@@ -63,6 +64,7 @@
                     android:id="@+id/main_tab_list"
                     style="@style/MMTabButton"
                     android:layout_weight="1.0"
+                                        android:paddingTop="7dp"
                     android:drawableTop="@drawable/main_menu_list"
                     android:text="@string/main_menu_list"
                     android:textColor="@color/color_radiobutton" />
@@ -72,6 +74,7 @@
                     android:id="@+id/main_tab_shopcart"
                     style="@style/MMTabButton"
                     android:layout_weight="1.0"
+                                        android:paddingTop="7dp"
                     android:drawableTop="@drawable/main_menu_shopcart"
                     android:text="@string/main_menu_shopcart"
                     android:textColor="@color/color_radiobutton" />
@@ -80,7 +83,7 @@
                 <RadioButton
                     android:id="@+id/main_tab_personcenter"
                     style="@style/MMTabButton"
-                    
+                                        android:paddingTop="7dp"
                     android:layout_weight="1.0"
                     android:drawableTop="@drawable/main_menu_personcenter"
                     android:text="@string/main_menu_personcenter"
