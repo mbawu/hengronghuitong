@@ -40,6 +40,7 @@ public class ProductListShow extends Activity implements OnClickListener,OnItemC
 	private String Category_id;// 获取分类商品的分类ID
 	private String CacheID;// 获取分类商品的CaheID
 	private int page = 1; // 需要申请查看的数据的页码
+	private String pageSize="10";
 	private int totalpage=0;
 	private GridView gridView;// 显示数据的容器
 	private MyAdapter adapter; // 适配器
@@ -67,12 +68,12 @@ public class ProductListShow extends Activity implements OnClickListener,OnItemC
 			public void onScroll(AbsListView view, int firstVisibleItem,
 					int visibleItemCount, int totalItemCount) {
 				//判断是否需要加载数据并且已经显示到了最后一条数据
-				if(load && (firstVisibleItem+visibleItemCount==totalItemCount))
+				if(load && (firstVisibleItem+visibleItemCount==(page-1)*Integer.valueOf(pageSize)) &&page>1)
 				{
 					//重置加载标示
 					load=false;
 					//搜索后面几页的数据
-					sendData(NetworkAction.搜索商品);                                                                                                                                                                                                                                                     
+					sendData(NetworkAction.获取分类商品);                                                                                                                                                                                                                                                     
 				}
 			}
 
@@ -137,7 +138,7 @@ public class ProductListShow extends Activity implements OnClickListener,OnItemC
 			paramter.put("sid", MyApplication.sid);
 			paramter.put("store_id", MyApplication.sid);
 			paramter.put("nowpage", String.valueOf(page));
-			paramter.put("pagesize", "10");
+			paramter.put("pagesize", pageSize);
 			paramter.put("keyname", Category_id);
 			paramter.put("CacheID", CacheID);
 			paramter.put("keyname1", "0");

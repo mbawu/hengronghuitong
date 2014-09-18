@@ -115,8 +115,16 @@ public class MyAdapter extends BaseAdapter implements
 		return position;
 	}
 
+	class ProductHolder
+	{
+		Product product ;
+		NetworkImageView img;
+		TextView nameTxt ;
+		TextView priceTxt ;
+	}
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+		ProductHolder productHolder = null;
 		if (convertView == null) {
 			// if(module.equals("home_hot"))
 			// convertView=MyApplication.Inflater.inflate(R.layout.home_hot_item,
@@ -126,8 +134,20 @@ public class MyAdapter extends BaseAdapter implements
 						R.layout.person_address_item, null);
 			else if (request.equals(NetworkAction.热门商品)
 					|| request.equals(NetworkAction.获取分类商品)
-					|| request.equals(NetworkAction.搜索商品)
-					|| request.equals(NetworkAction.秒杀商品))
+					|| request.equals(NetworkAction.搜索商品))
+			{
+				productHolder=new ProductHolder();
+				convertView = MyApplication.Inflater.inflate(
+						R.layout.home_hot_item, null);
+				productHolder.img= (NetworkImageView) convertView
+						.findViewById(R.id.home_hot_img);
+				productHolder.nameTxt = (TextView) convertView
+						.findViewById(R.id.home_hot_name);
+				productHolder.priceTxt = (TextView) convertView
+						.findViewById(R.id.home_hot_price);
+				convertView.setTag(productHolder);
+			}
+			else if (request.equals(NetworkAction.秒杀商品))
 				convertView = MyApplication.Inflater.inflate(
 						R.layout.home_hot_item, null);
 			else if (request.equals(NetworkAction.我的消息))
@@ -168,7 +188,11 @@ public class MyAdapter extends BaseAdapter implements
 		else if (convertView != null && request.equals(NetworkAction.秒杀商品)) {
 			return convertView;
 		}
-
+		else if (convertView != null && request.equals(NetworkAction.热门商品)
+				|| request.equals(NetworkAction.获取分类商品)
+				|| request.equals(NetworkAction.搜索商品)) {
+			productHolder=(ProductHolder) convertView.getTag();
+		}
 		if (request.equals(NetworkAction.获取收货地址列表))// 设置收货地址item界面
 		{
 			TextView name = (TextView) convertView
@@ -219,17 +243,17 @@ public class MyAdapter extends BaseAdapter implements
 				|| request.equals(NetworkAction.获取分类商品)
 				|| request.equals(NetworkAction.搜索商品)) {
 			Product product = (Product) data.get(position);
-			NetworkImageView img = (NetworkImageView) convertView
-					.findViewById(R.id.home_hot_img);
-			TextView nameTxt = (TextView) convertView
-					.findViewById(R.id.home_hot_name);
-			TextView priceTxt = (TextView) convertView
-					.findViewById(R.id.home_hot_price);
-			nameTxt.setText(product.getName());
-			priceTxt.setText("￥ " + product.getStorePrice());
+//			NetworkImageView img = (NetworkImageView) convertView
+//					.findViewById(R.id.home_hot_img);
+//			TextView nameTxt = (TextView) convertView
+//					.findViewById(R.id.home_hot_name);
+//			TextView priceTxt = (TextView) convertView
+//					.findViewById(R.id.home_hot_price);
+			productHolder.nameTxt.setText(product.getName());
+			productHolder.priceTxt.setText("￥ " + product.getStorePrice());
 			// Log.i(MyApplication.TAG,"getImgPath-->"+ product.getImgPath());
 			MyApplication.client.getImageForNetImageView(product.getImgPath(),
-					img, R.drawable.ic_launcher);
+					productHolder.img, R.drawable.ic_launcher);
 		} else if (request.equals(NetworkAction.我的消息)) {
 			TextView subjectTxt = (TextView) convertView
 					.findViewById(R.id.person_msg_subject);
