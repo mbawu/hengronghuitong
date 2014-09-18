@@ -161,7 +161,7 @@ public class MyApplication extends Application {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-				System.exit(0);
+//				System.exit(0);
 		}
 	}
 

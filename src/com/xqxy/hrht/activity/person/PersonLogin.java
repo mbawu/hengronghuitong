@@ -93,7 +93,8 @@ public class PersonLogin extends Activity implements OnClickListener {
 			Intent intent = new Intent(Intent.ACTION_MAIN);
 			intent.addCategory(Intent.CATEGORY_HOME);
 			startActivity(intent);
-			System.exit(0);
+			MyApplication.getInstance().exit();
+			finish();
 		}
 
 	}

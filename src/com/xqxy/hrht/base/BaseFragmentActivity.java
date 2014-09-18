@@ -12,6 +12,12 @@ import android.view.View.OnClickListener;
 
 public class BaseFragmentActivity extends FragmentActivity implements OnClickListener{
 
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		MyApplication.getInstance().addActivity(this);
+	}
 	 @Override
 		public boolean onKeyDown(int keyCode, KeyEvent event) {
 			// TODO Auto-generated method stub
