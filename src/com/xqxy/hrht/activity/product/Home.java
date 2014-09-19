@@ -78,8 +78,24 @@ public class Home extends BaseActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
+		//开启倒计时功能
+				startChangeTime();
 		initView();
 		initData();
+		
+	}
+
+	//开启倒计时功能
+	private void startChangeTime() {
+		//如果退出程序以后该标识符为true，再次进入的时候需要重置该标识符才可启动倒计时功能
+		if(MyApplication.exit)
+		{
+			//清空之前的数据
+			ChangeTime.txtViewList.clear();
+			ChangeTime.timeList.clear();
+			MyApplication.exit=false;
+		}
+		
 	}
 
 	@Override
