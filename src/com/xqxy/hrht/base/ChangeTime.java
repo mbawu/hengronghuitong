@@ -19,7 +19,7 @@ public class ChangeTime  implements Runnable{
 	public static ArrayList<TextView> txtViewList;
 	
 	public static  long secKillTime=-1;
-	
+	public static boolean exit=true;
 	public ChangeTime()
 	{
 		timeList=new ArrayList<Long>();
@@ -29,7 +29,7 @@ public class ChangeTime  implements Runnable{
 	
 	@Override
 	public void run() {
-		while(true)
+		while(exit)
 		{
 			try {
 				Thread.sleep(1000);
@@ -59,7 +59,7 @@ public class ChangeTime  implements Runnable{
 			}
 			
 			//秒杀商品列表倒计时刷新
-			if(timeList.size()>0&&!MyApplication.exit)
+			if(timeList.size()>0)
 			{
 //				Log.i(MyApplication.TAG, "timeList-->"+timeList.size());
 //				Log.i(MyApplication.TAG, "txtViewList-->"+txtViewList.size());
