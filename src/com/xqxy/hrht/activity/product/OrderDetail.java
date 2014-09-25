@@ -110,7 +110,7 @@ public class OrderDetail extends Activity {
 		}
 
 		
-		totalprice.setText(order.getTotalPrice());
+		totalprice.setText("￥"+order.getTotalPrice());
 		//商品信息
 		ArrayList<Object> tempData=order.getProducts();
 		for (int i = 0; i < tempData.size(); i++) {

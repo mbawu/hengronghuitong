@@ -62,7 +62,6 @@ public class MyAdapter extends BaseAdapter implements
 	private ArrayList<Object> data;
 	private NetworkAction request;
 	private int orderTypeTemp;
-	private int orderComment;
 	/**
 	 * 
 	 * @param object
@@ -525,7 +524,7 @@ public class MyAdapter extends BaseAdapter implements
 			// 要查看的订单类型：1.待付款，2.待发货，3.待收货，4.已完成
 			int orderType = Integer.valueOf(order.getOrderType());
 			orderTypeTemp=orderType;
-			orderComment=Integer.valueOf(order.getComments());
+			int orderComment=Integer.valueOf(order.getComments());
 //			leftBtn.setTag(R.id.tag_three, orderType);
 			leftBtn.setOnClickListener(this);
 			rightBtn.setOnClickListener(this);
@@ -597,7 +596,7 @@ public class MyAdapter extends BaseAdapter implements
 			final EditText comments = (EditText) convertView
 					.findViewById(R.id.addContent);
 			stars.setTag(product);
-			stars.setTag(R.id.tag_first, comments.getText().toString());
+			
 			addComment.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -608,6 +607,7 @@ public class MyAdapter extends BaseAdapter implements
 								"请填写评论！", 2000).show();
 						return;
 					}
+					stars.setTag(R.id.tag_first, comments.getText().toString());
 					MyApplication.comment=false;
 					((OrderEvaluate)object).publishComment(stars);
 				}
@@ -708,7 +708,8 @@ public class MyAdapter extends BaseAdapter implements
 				//如果是已完成状态该按钮为评价订单的功能
 			case 4:
 				//如果是未评价的状态才执行评价操作
-				if (orderComment==0)
+				Log.i(MyApplication.TAG, "orderComment-->"+order.getComments());
+				if (order.getComments().equals("0"))
 				{
 					Intent intent2=new Intent();
 					intent2.setClass(((PersonOrder)object).getActivity(), OrderEvaluate.class);
