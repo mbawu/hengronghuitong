@@ -56,14 +56,9 @@
             
              
             <EditText
+                 style="@style/edit_box"
                 android:id="@+id/person_register_phone"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="10dp"
-                android:hint="@string/person_register_phone"
-                android:paddingLeft="20dp"
-                android:textColor="#333333"
-                android:textSize="15sp" />
+                android:hint="@string/person_register_phone"/>
 
             <FrameLayout
                 android:layout_width="fill_parent"
@@ -95,37 +90,17 @@
             </FrameLayout>
 
             <EditText
+                style="@style/edit_box"
                 android:id="@+id/person_register_password"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="10dp"
                 android:hint="@string/person_register_password"
-                android:inputType="textPassword"
-                android:paddingLeft="20dp"
-                android:textColor="#333333"
-                android:textSize="15sp" />
+                android:inputType="textPassword" />
 
             <EditText
+                style="@style/edit_box"
                 android:id="@+id/person_register_pwdagain"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="10dp"
                 android:hint="@string/person_register_pwdagain"
-                android:inputType="textPassword"
-                android:paddingLeft="20dp"
-                android:textColor="#333333"
-                android:textSize="15sp" />
+                android:inputType="textPassword" />
 
-            <EditText
-                android:id="@+id/person_register_email"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="50dp"
-                android:hint="@string/person_register_email"
-                android:paddingLeft="20dp"
-                android:textColor="#333333"
-                android:textSize="15sp" 
-                android:visibility="gone"/>
 <!-- 注册按钮 -->
             <Button
                 android:id="@+id/person_register_btn"

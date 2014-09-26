@@ -37,7 +37,7 @@ public class PersonRegister extends Activity implements OnClickListener {
 	private EditText validTxt;
 	private EditText pwdTxt;
 	private EditText pwdAginTxt;
-	private EditText emailTxt;
+//	private EditText emailTxt;
 	private LinearLayout backBtn;// 后台按钮
 	private Button registerbtn;// 注册按钮
 	private Button getMsgBtn;// 获取验证码按钮
@@ -63,7 +63,7 @@ public class PersonRegister extends Activity implements OnClickListener {
 		validTxt = (EditText) findViewById(R.id.person_register_validmsg);
 		pwdTxt = (EditText) findViewById(R.id.person_register_password);
 		pwdAginTxt = (EditText) findViewById(R.id.person_register_pwdagain);
-		emailTxt = (EditText) findViewById(R.id.person_register_email);
+//		emailTxt = (EditText) findViewById(R.id.person_register_email);
 
 		// 后退按钮
 		backBtn = (LinearLayout) findViewById(R.id.person_register_backbtn);
@@ -101,7 +101,7 @@ public class PersonRegister extends Activity implements OnClickListener {
 		String valid = validTxt.getText().toString();
 		final String pwd = pwdTxt.getText().toString();
 		String pwdAgain = pwdAginTxt.getText().toString();
-		String email = emailTxt.getText().toString();
+//		String email = emailTxt.getText().toString();
 		phone = phoneTxt.getText().toString();
 		if (phone.equals("")) {
 			Toast.makeText(this, "请输入手机号！", 2000).show();
