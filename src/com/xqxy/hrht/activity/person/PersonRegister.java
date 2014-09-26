@@ -95,7 +95,7 @@ public class PersonRegister extends Activity implements OnClickListener {
 
 	}
 
-	// 向服务器发送数据
+	// 向服务器发送数据/
 	private void sendData(final NetworkAction request) {
 		String url = null;
 		String valid = validTxt.getText().toString();
