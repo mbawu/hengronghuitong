@@ -603,7 +603,9 @@ public class SubmitOrder extends Activity implements OnClickListener {
 			json.append("{");
 			json.append("\"product_id\":\"").append(product.getId())
 					.append("\"");
-
+			if(product.getGift_name()!=null)
+				json.append(",\"gift_name\":\"").append(product.getGift_name())
+			.append("\"");
 			json.append(",\"product_num\":\"").append(product.getNum())
 					.append("\"");
 			json.append(",\"store_price\":\"").append(product.getStorePrice())
