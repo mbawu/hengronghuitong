@@ -496,7 +496,6 @@ public class ProductDetail extends Activity implements OnClickListener,
 											RadioGroup attributeGroup = new RadioGroup(
 													layout.getContext());
 											attributeGroup.setOrientation(1);
-											
 											for (int i = 0; i < attributes.length(); i++) {
 												RadioGroup.LayoutParams layoutParams1 = new RadioGroup.LayoutParams(
 														LayoutParams.WRAP_CONTENT,

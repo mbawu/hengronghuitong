@@ -125,6 +125,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/system_padding_mid"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
             <RadioButton
                 android:id="@+id/submit_payway_online"
@@ -152,7 +153,7 @@
                 android:paddingBottom="5dp"
                 android:textColor="@color/gray"
                 android:drawableLeft="@drawable/submit_payway_no_bg"
-                android:text="货到付款"/>
+                android:text="货到付款(限北京区域)"/>
         </RadioGroup>
     </LinearLayout>
 
